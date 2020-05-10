@@ -1,0 +1,22 @@
+{
+    "name": "fall1600/ecpay",
+    "description": "implement of ecpay",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "fall1600",
+            "email": "fall1600@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "fall1600\\Package\\Ecpay\\": ""
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    }
+}
