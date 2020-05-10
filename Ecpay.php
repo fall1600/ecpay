@@ -71,11 +71,18 @@ class Ecpay
     {
         $url = $this->isProduction? static::CHECKOUT_URL_PRODUCTION: static::CHECKOUT_URL_TEST;
 
-        return <<<EOT
-        <form name="newebpay" id="{$this->formId}" method="post" action="{$url}" style="display:none;">
-            <input type="text" name="CheckMacValue" value="{$info->get}">
-        </form>
-        EOT;
+        $checksum = $this->merchant->countCheckSum($info);
+
+        $form = "<form name='ecpay' id='$this->formId' method='post' action='$url' style='display: none'>";
+        $form .= "<input type='hidden' name='CheckMacValue' value='$checksum' />";
+
+        foreach ($info->getInfo() as $key => $value) {
+            $form .=  "<input type='hidden' name='$key' value='$value' />";
+        }
+
+        $form .= "</form>";
+
+        return $form;
     }
 
     /**
