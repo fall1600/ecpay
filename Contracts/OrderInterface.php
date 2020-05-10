@@ -1,11 +1,11 @@
 <?php
 
-namespace fall1600\Package\Ecpay\Constracts;
+namespace fall1600\Package\Ecpay\Contracts;
 
 interface OrderInterface
 {
     /** @return string */
-    public function getMerchantNo();
+    public function getMerchantTradeNo();
 
     /** @return string */
     public function getTotalAmount();

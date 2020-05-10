@@ -4,6 +4,8 @@ namespace fall1600\Package\Ecpay;
 
 class Merchant
 {
+    use Cryption;
+
     /**
      * @var string
      */

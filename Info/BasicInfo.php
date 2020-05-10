@@ -8,7 +8,7 @@ class BasicInfo extends Info
     {
         return [
             'MerchantID' => $this->merchantId,
-            'MerchantTradeNo' => $this->order->getMerchantNo(),
+            'MerchantTradeNo' => $this->order->getMerchantTradeNo(),
             'MerchantTradeDate' => date('Y/m/d H:i:s'),
             'PaymentType' => 'aio',
             'TotalAmount' => $this->order->getTotalAmount(),
@@ -16,7 +16,6 @@ class BasicInfo extends Info
             'ItemName' => $this->order->getItemName(),
             'ReturnURL' => $this->returnUrl,
             'ChoosePayment' => $this->paymentType,
-            'CheckMacValue' => $this->checksum,
             'EncryptType' => 1,
         ];
     }

@@ -39,6 +39,11 @@ class Ecpay
     /** @var string */
     protected $formId = 'ecpay-form';
 
+    /**
+     * @var Merchant
+     */
+    protected $merchant;
+
     public function checkout(Info $info)
     {
         echo <<<EOT
@@ -71,6 +76,17 @@ class Ecpay
             <input type="text" name="CheckMacValue" value="{$info->get}">
         </form>
         EOT;
+    }
+
+    /**
+     * @param Merchant $merchant
+     * @return $this
+     */
+    public function setMerchant(Merchant $merchant)
+    {
+        $this->merchant = $merchant;
+
+        return $this;
     }
 
     /**

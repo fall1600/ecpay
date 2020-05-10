@@ -2,7 +2,7 @@
 
 namespace fall1600\Package\Ecpay\Info;
 
-use fall1600\Package\Ecpay\Constracts\OrderInterface;
+use fall1600\Package\Ecpay\Contracts\OrderInterface;
 
 abstract class Info
 {
