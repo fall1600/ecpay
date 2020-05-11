@@ -30,4 +30,36 @@ abstract class Info
 
         $this->order = $order;
     }
+
+    /**
+     * @return string
+     */
+    public function getMerchantId()
+    {
+        return $this->merchantId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReturnUrl()
+    {
+        return $this->returnUrl;
+    }
+
+    /**
+     * @return OrderInterface
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPaymentType()
+    {
+        return $this->paymentType;
+    }
 }
