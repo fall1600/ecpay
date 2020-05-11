@@ -11,7 +11,8 @@
     ],
     "minimum-stability": "stable",
     "require": {
-      "ext-curl": "*"
+      "ext-curl": "*",
+      "ext-json": "*"
     },
     "autoload": {
         "psr-4": {
