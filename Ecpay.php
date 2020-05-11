@@ -2,6 +2,7 @@
 
 namespace fall1600\Package\Ecpay;
 
+use fall1600\Package\Ecpay\Contracts\OrderInterface;
 use fall1600\Package\Ecpay\Info\Info;
 
 class Ecpay
@@ -63,8 +64,31 @@ class Ecpay
         EOT;
     }
 
-    public function query()
+    public function query(OrderInterface $order)
     {
+        if (! $this->merchant) {
+            throw new \LogicException('empty merchant');
+        }
+
+        $url = $this->isProduction? static::QUERY_URL_PRODUCTION: static::QUERY_URL_TEST;
+
+        $payload = [
+            'MerchantID' => $this->merchant->getId(),
+            'MerchantTradeNo' => $order->getMerchantTradeNo(),
+            'TimeStamp' => time(),
+            // todo: 介面不同
+//            'CheckMacValue' => $this->merchant->countCheckSum(),
+        ];
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($payload));
+
+        $resp = curl_exec($ch);
+        curl_close($ch);
+
+        return json_decode($resp, true);
     }
 
     public function generateForm(Info $info)

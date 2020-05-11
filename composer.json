@@ -10,7 +10,9 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {},
+    "require": {
+      "ext-curl": "*"
+    },
     "autoload": {
         "psr-4": {
             "fall1600\\Package\\Ecpay\\": ""
