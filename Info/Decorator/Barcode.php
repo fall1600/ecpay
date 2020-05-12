@@ -2,6 +2,8 @@
 
 namespace fall1600\Package\Ecpay\Info\Decorator;
 
+use fall1600\Package\Ecpay\Constants\PaymentType;
+
 class Barcode extends AbstractCvs
 {
     /**
@@ -14,6 +16,7 @@ class Barcode extends AbstractCvs
     {
         $result = $this->info->getInfo() +
             [
+                'ChoosePayment' => PaymentType::BARCODE,
                 'StoreExpireDate' => $this->ttl,
                 'PaymentInfoURL' => $this->paymentInfoUrl,
                 'ClientRedirectURL' => $this->clientRedirectUrl,

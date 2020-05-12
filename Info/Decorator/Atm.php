@@ -2,6 +2,7 @@
 
 namespace fall1600\Package\Ecpay\Info\Decorator;
 
+use fall1600\Package\Ecpay\Constants\PaymentType;
 use fall1600\Package\Ecpay\Info\Info;
 
 class Atm extends AbstractOfflinePay
@@ -22,6 +23,7 @@ class Atm extends AbstractOfflinePay
     {
         return $this->info->getInfo() +
             [
+                'ChoosePayment' => PaymentType::ATM,
                 'ExpireDate' => $this->ttl,
                 'PaymentInfoURL' => $this->paymentInfoUrl,
                 'ClientRedirectURL' => $this->clientRedirectUrl,
