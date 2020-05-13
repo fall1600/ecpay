@@ -2,7 +2,9 @@
 
 namespace fall1600\Package\Ecpay\Constants;
 
-class LanguageType
+use MyCLabs\Enum\Enum;
+
+class LanguageType extends Enum
 {
     public const EN = 'ENG';
 

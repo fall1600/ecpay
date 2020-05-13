@@ -2,7 +2,9 @@
 
 namespace fall1600\Package\Ecpay\Constants;
 
-class PaymentType
+use MyCLabs\Enum\Enum;
+
+class PaymentType extends Enum
 {
     public const CREDIT = 'Credit';
     public const WEBATM = 'WebATM';
