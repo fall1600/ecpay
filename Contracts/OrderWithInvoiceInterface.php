@@ -12,4 +12,7 @@ interface OrderWithInvoiceInterface extends OrderInterface
 
     // 捐贈註記
     public function getDonation();
+
+    // 通關方式
+    public function getClearanceType();
 }
