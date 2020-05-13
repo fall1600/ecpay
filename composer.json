@@ -11,8 +11,9 @@
     ],
     "minimum-stability": "stable",
     "require": {
-      "ext-curl": "*",
-      "ext-json": "*"
+        "ext-curl": "*",
+        "ext-json": "*",
+        "myclabs/php-enum": "^1.7"
     },
     "autoload": {
         "psr-4": {
