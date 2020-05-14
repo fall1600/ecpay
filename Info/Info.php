@@ -2,6 +2,7 @@
 
 namespace fall1600\Package\Ecpay\Info;
 
+use fall1600\Package\Ecpay\Constants\PaymentType;
 use fall1600\Package\Ecpay\Contracts\OrderInterface;
 
 abstract class Info
@@ -20,15 +21,15 @@ abstract class Info
 
     abstract public function getInfo();
 
-    public function __construct(string $merchantId, string $returnUrl, string $paymentType, OrderInterface $order)
+    public function __construct(string $merchantId, string $returnUrl, OrderInterface $order, string $paymentType = PaymentType::ALL)
     {
         $this->merchantId = $merchantId;
 
         $this->returnUrl = $returnUrl;
 
-        $this->paymentType = $paymentType;
-
         $this->order = $order;
+
+        $this->paymentType = $paymentType;
     }
 
     /**
