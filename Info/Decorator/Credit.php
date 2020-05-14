@@ -41,9 +41,10 @@ class Credit extends InfoDecorator
                 'ChoosePayment' => PaymentType::CREDIT,
             ];
 
-        if ($this->quickCredit)  {
+        // 有帶QuickCredit 就是要啟用快速結帳, 所以BindingCard 帶1
+        if ($this->quickCredit) {
             $result += [
-                'BindingCard' => $this->quickCredit->getIsBindingCard()? 1: 0,
+                'BindingCard' => 1,
                 'MerchantMemberID' => $this->quickCredit->getMerchantMemberId(),
             ];
         }
