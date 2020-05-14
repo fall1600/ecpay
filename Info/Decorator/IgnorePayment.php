@@ -2,6 +2,7 @@
 
 namespace fall1600\Package\Ecpay\Info\Decorator;
 
+use fall1600\Package\Ecpay\Constants\PaymentType;
 use fall1600\Package\Ecpay\Info\Info;
 use fall1600\Package\Ecpay\Info\InfoDecorator;
 
@@ -21,7 +22,7 @@ class IgnorePayment extends InfoDecorator
     {
         $this->info = $info;
 
-        $this->ignores = $ignores;
+        $this->setIgnores($ignores);
     }
 
     public function getInfo()
@@ -30,5 +31,16 @@ class IgnorePayment extends InfoDecorator
             [
                 'IgnorePayment' => implode('#', $this->ignores),
             ];
+    }
+
+    protected function setIgnores(array $ignores)
+    {
+        foreach ($ignores as $ignore) {
+            if (! PaymentType::isValid($ignore)) {
+                throw new \LogicException("unsupported payment type $ignore");
+            }
+        }
+
+        $this->ignores = $ignores;
     }
 }
