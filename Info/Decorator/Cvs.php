@@ -2,7 +2,7 @@
 
 namespace fall1600\Package\Ecpay\Info\Decorator;
 
-use fall1600\Package\Ecpay\Constants\PaymentType;
+use fall1600\Package\Ecpay\Constants\Payment\CvsSubType;
 
 class Cvs extends AbstractCvs
 {
@@ -12,27 +12,22 @@ class Cvs extends AbstractCvs
      */
     protected $ttl;
 
-    public function getInfo()
-    {
-        $result = $this->info->getInfo() +
-            [
-                'ChoosePayment' => PaymentType::CVS,
-                'StoreExpireDate' => $this->ttl,
-                'PaymentInfoURL' => $this->paymentInfoUrl,
-                'ClientRedirectURL' => $this->clientRedirectUrl,
-            ];
-
-        for ($i = 1; $i < count($this->descriptions); $i++) {
-            $result += [
-                "Desc_$i" => $this->descriptions[$i],
-            ];
-        }
-
-        return $result;
-    }
+    /**
+     * @var string
+     */
+    protected $subPaymentType;
 
     protected function setTtl(int $ttl)
     {
         $this->ttl = $ttl;
+    }
+
+    protected function setSubPaymentType(string $subPaymentType)
+    {
+        if (! CvsSubType::isValid($subPaymentType)) {
+            throw new \LogicException('unsupported sub payment type of csv');
+        }
+
+        $this->subPaymentType = $subPaymentType;
     }
 }
