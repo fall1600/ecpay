@@ -3,6 +3,7 @@
 namespace fall1600\Package\Ecpay\Info\Decorator;
 
 use fall1600\Package\Ecpay\Constants\PaymentType;
+use fall1600\Package\Ecpay\Constants\Payment\AtmSubType;
 use fall1600\Package\Ecpay\Info\Info;
 
 class Atm extends AbstractOfflinePay
@@ -14,20 +15,35 @@ class Atm extends AbstractOfflinePay
      */
     protected $ttl;
 
-    public function __construct(Info $info, string $paymentInfoUrl, int $ttl = null, string $clientRedirectUrl = null)
+    /**
+     * @var string|null
+     */
+    protected $subPaymentType;
+
+    public function __construct(Info $info, string $paymentInfoUrl, int $ttl = null, string $clientRedirectUrl = null, string $subPaymentType = null)
     {
         parent::__construct($info, $paymentInfoUrl, $ttl, $clientRedirectUrl);
+
+        $this->setSubPaymentType($subPaymentType);
     }
 
     public function getInfo()
     {
-        return $this->info->getInfo() +
+        $result = $this->info->getInfo() +
             [
                 'ChoosePayment' => PaymentType::ATM,
                 'ExpireDate' => $this->ttl,
                 'PaymentInfoURL' => $this->paymentInfoUrl,
                 'ClientRedirectURL' => $this->clientRedirectUrl,
             ];
+
+        if ($this->subPaymentType) {
+            $result += [
+                'ChooseSubPayment' => $this->subPaymentType,
+            ];
+        }
+
+        return $result;
     }
 
     protected function setTtl(int $ttl = null)
@@ -37,5 +53,14 @@ class Atm extends AbstractOfflinePay
         }
 
         $this->ttl = $ttl;
+    }
+
+    protected function setSubPaymentType(?string $subPaymentType)
+    {
+        if (! AtmSubType::isValid($subPaymentType)) {
+            throw new \LogicException('unsupported sub payment of atm');
+        }
+
+        $this->subPaymentType = $subPaymentType;
     }
 }

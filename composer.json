@@ -12,6 +12,7 @@
     "minimum-stability": "stable",
     "require": {
         "ext-curl": "*",
+        "ext-mbstring": "*",
         "ext-json": "*",
         "myclabs/php-enum": "^1.7"
     },

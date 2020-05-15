@@ -4,6 +4,10 @@ namespace fall1600\Package\Ecpay\Info;
 
 class BasicInfo extends Info
 {
+    /**
+     * ReturnURL 用來收付款結果通知, 收到後, 請正確回應 1|OK 給綠界
+     * @return array
+     */
     public function getInfo()
     {
         return [
