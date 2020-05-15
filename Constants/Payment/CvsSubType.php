@@ -16,7 +16,7 @@ class CvsSubType extends Enum
     public const FAMILY = 'FAMILY';
 
     // 萊爾富超商代碼繳款
-    public const HILIFE = 'HIFILE';
+    public const HILIFE = 'HILIFE';
 
     // 7-11 ibon 代碼繳款
     public const IBON = 'IBON';
