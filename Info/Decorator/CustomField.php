@@ -30,7 +30,7 @@ class CustomField extends InfoDecorator
     {
         $result = $this->info->getInfo();
 
-        for ($i = 0; $i < static::SIZE; $i++) {
+        for ($i = 0, $max = min(static::SIZE, count($this->fields)); $i < $max; $i++) {
             $result += [
                 'CustomField'.($i+1) => $this->fields[$i],
             ];
