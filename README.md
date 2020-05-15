@@ -49,8 +49,7 @@ class Order implements OrderInterface
 | ClientRedirectURL| 離線付款取號完成要回到你系統的位置         | //FIXME: OfflinePay   | 沒設定就是顯示在綠界                            |
 |                  | 付款完成後要回到你系統的位置              | PayComplete  | 沒設定就是顯示在綠界                                        |
 | ClientBackURL    | 交易取消時回到你系統的位置                | PayCancel    | 沒設定就是顯示在綠界                                        |
-
-PeriodReturnURL
-OrderResultURL
+| OrderResultURL   | 付款完成回到你系統的位置                 |               | 沒設定就是顯示在綠界                                        |
+| PeriodReturnURL  | 定期定額授權結果回傳通知你系統的 callback url |            |                                       |
 
  
