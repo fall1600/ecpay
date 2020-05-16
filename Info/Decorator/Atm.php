@@ -57,7 +57,7 @@ class Atm extends AbstractOfflinePay
 
     protected function setSubPaymentType(?string $subPaymentType)
     {
-        if (! AtmSubType::isValid($subPaymentType)) {
+        if ($subPaymentType && ! AtmSubType::isValid($subPaymentType)) {
             throw new \LogicException('unsupported sub payment of atm');
         }
 
