@@ -20,6 +20,11 @@ trait Cryption
     {
         $infoPayload = $info->getInfo();
 
+        return $this->countChecksumByArray($infoPayload);
+    }
+
+    public function countChecksumByArray(array $infoPayload)
+    {
         // 參數依照字母排序
         ksort($infoPayload);
 

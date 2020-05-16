@@ -27,4 +27,28 @@ class Response
     {
         return $this->data['MerchantTradeNo'] ?? null;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getCheckSum()
+    {
+        return $this->data['CheckMacValue'] ?? null;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTradeNo()
+    {
+        return $this->data['TradeNo'] ?? null;
+    }
+
+    /**
+     * @return array
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
 }
