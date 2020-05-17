@@ -90,4 +90,18 @@ class Merchant
         $this->response = new Response($rawData);
         return $this;
     }
+
+    /**
+     * @return bool
+     */
+    public function validateResponse()
+    {
+        if (! $this->response) {
+            throw new \LogicException('set rawData first');
+        }
+
+        $responseChecksum = $this->response->getCheckSum();
+        $countedChecksum = $this->countChecksumByArray($this->response->getOriginInfoPayload());
+        return $responseChecksum === $countedChecksum;
+    }
 }

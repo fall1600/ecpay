@@ -45,6 +45,15 @@ class Response
     }
 
     /**
+     * 原始交易資訊, 可用此payload 運算綠界來的checksum 是否正確
+     * @return array
+     */
+    public function getOriginInfoPayload()
+    {
+        return array_diff_key($this->data, ['CheckMacValue' => 1]);
+    }
+
+    /**
      * @return array
      */
     public function getData()

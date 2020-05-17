@@ -41,6 +41,23 @@ class Order implements OrderInterface
 
 ```
 
+#### 解開來自綠界的交易通知
+```php
+$isValid = $merchant->setRawData($request->all())->validateResponse(); //確認為true 後再往下走
+
+// response 封裝了通知交易的結果, 以下僅列常用methods
+$response = $merchant->getResponse();
+// 付款成敗
+$response->getStatus();
+// 取得交易序號
+$response->getTradeNo();
+// 取得訂單編號, 就是OrderInterface 實作的getMerchantOrderNo
+$response->getMerchantOrderNo();
+// 付款時間
+$response->getPayTime();
+```
+
+
 #### 各種url 你分的清楚嗎?
 | Name             | 用途                                  | 設定的物件    |    備註                                                   |
 |:-----------------|:------------------------------------ |:-------------|:---------------------------------------------------------|
