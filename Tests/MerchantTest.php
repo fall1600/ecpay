@@ -69,4 +69,48 @@ class MerchantTest extends TestCase
         //assert
         $this->assertEquals($expected, $result);
     }
+
+    public function test_validateResponse()
+    {
+        //arrange
+        $merchantId = '2000132';
+
+        $hashKey = '5294y06JbISpM5x9';
+
+        $hashIv = 'v77hoKGq4kWxNNIS';
+
+        $merchant = new Merchant($merchantId, $hashKey, $hashIv);
+
+        $str = '{"CustomField1":"abc","CustomField2":"def","CustomField3":"fff","CustomField4":null,"MerchantID":"2000132","MerchantTradeNo":"1589634536","PaymentDate":"2020/05/16 21:09:36","PaymentType":"Credit_CreditCard","PaymentTypeChargeFee":"20","RtnCode":"1","RtnMsg":"交易成功","SimulatePaid":"0","StoreID":null,"TradeAmt":"1000","TradeDate":"2020/05/16 21:08:56","TradeNo":"2005162108564884","CheckMacValue":"1FE882456C87E84D69CD9386B886E70BAD482513D0742D828AE724AEEA4AACFA"}';
+        $payload = json_decode($str, true);
+
+        //act
+        $result = $merchant->setRawData($payload)
+            ->validateResponse();
+
+        //assert
+        $this->assertTrue($result);
+    }
+
+    public function test_validateResponse_false()
+    {
+        //arrange
+        $merchantId = '2000132';
+
+        $hashKey = 'forge.key';
+
+        $hashIv = 'forge.iv';
+
+        $merchant = new Merchant($merchantId, $hashKey, $hashIv);
+
+        $str = '{"CustomField1":"abc","CustomField2":"def","CustomField3":"fff","CustomField4":null,"MerchantID":"2000132","MerchantTradeNo":"1589634536","PaymentDate":"2020/05/16 21:09:36","PaymentType":"Credit_CreditCard","PaymentTypeChargeFee":"20","RtnCode":"1","RtnMsg":"交易成功","SimulatePaid":"0","StoreID":null,"TradeAmt":"1000","TradeDate":"2020/05/16 21:08:56","TradeNo":"2005162108564884","CheckMacValue":"1FE882456C87E84D69CD9386B886E70BAD482513D0742D828AE724AEEA4AACFA"}';
+        $payload = json_decode($str, true);
+
+        //act
+        $result = $merchant->setRawData($payload)
+            ->validateResponse();
+
+        //assert
+        $this->assertFalse($result);
+    }
 }
