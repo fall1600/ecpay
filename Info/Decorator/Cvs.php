@@ -7,7 +7,7 @@ use fall1600\Package\Ecpay\Constants\Payment\CvsSubType;
 class Cvs extends AbstractCvs
 {
     /**
-     * 繳費期限, 以天為單位
+     * 繳費期限, 以分鐘為單位
      * @var int
      */
     protected $ttl;
