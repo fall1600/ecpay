@@ -43,7 +43,7 @@ abstract class AbstractCvs extends AbstractOfflinePay
 
     public function __construct(Info $info, string $paymentInfoUrl, string $clientRedirectUrl = null, int $ttl = null, string $subPaymentType = null , string ... $descriptions)
     {
-        parent::__construct($info, $paymentInfoUrl, $ttl, $clientRedirectUrl);
+        parent::__construct($info, $paymentInfoUrl, $clientRedirectUrl, $ttl);
 
         $this->descriptions = array_slice($descriptions, 0, static::DESCRIPTION_SIZE);
 

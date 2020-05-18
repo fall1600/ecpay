@@ -20,9 +20,9 @@ class Atm extends AbstractOfflinePay
      */
     protected $subPaymentType;
 
-    public function __construct(Info $info, string $paymentInfoUrl, int $ttl = null, string $clientRedirectUrl = null, string $subPaymentType = null)
+    public function __construct(Info $info, string $paymentInfoUrl, string $clientRedirectUrl = null, int $ttl = null, string $subPaymentType = null)
     {
-        parent::__construct($info, $paymentInfoUrl, $ttl, $clientRedirectUrl);
+        parent::__construct($info, $paymentInfoUrl, $clientRedirectUrl, $ttl);
 
         $this->setSubPaymentType($subPaymentType);
     }
