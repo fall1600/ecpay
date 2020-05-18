@@ -8,8 +8,20 @@
  - $merchantId: 你在綠界申請的商店代號
  - $returnUrl: 用來接收綠界付款通知的callback url
  - $order: 你的訂單物件, 務必實作package 中的OrderInterface
+ - $paymentType: 預設交易方式全部開啟
 ```php
-$info = new BasicInfo($merchantId, $returnUrl, $order);
+$info = new BasicInfo($merchantId, $returnUrl, $order, $paymentType = 'ALL');
+```
+
+#### 控制交易方式
+```php
+// 依需求使用IgnorePayment 關閉付款方式(可參考PaymentType 付款方式)
+$info = new IgnorePayment($info, 'ATM', 'BARCODE');
+// 信用卡設定, quickCredit 可開啟記憶信用卡(需實作QuickCreditInterface), 以及設定紅利折抵 
+$info = new Credit($info, $quickCredit, true);
+// 超商繳費設定, 接收取號的webhook url, 要號完成的回導位置, 繳費期限(分鐘)
+$info = new Cvs($info, $paymentInfoUrl, $clientRedirectUrl, 30);
+$info = new Atm($info, );
 ```
 
 #### 建立Ecpay 物件, 注入商店資訊, 帶著交易資訊前往綠界付款
@@ -63,9 +75,9 @@ $response->getDate();
 #### 各種url 你分的清楚嗎?
 | Name             | 用途                                  | 設定的物件    |    備註                                                   |
 |:-----------------|:------------------------------------ |:-------------|:---------------------------------------------------------|
-| ReturnURL        | 通知你系統交易資訊的callback url         | BasicInfo    | 通常用在訂單付款狀態切換, 最重要,所以BasicInfo 就要設定了, 記得此webhook 檢查完checksum 後要return 1｜OK (半形的｜) 給綠界   |
+| ReturnURL        | 通知你系統交易資訊的callback url         | BasicInfo    | 通常用在訂單付款狀態切換, 最重要,所以BasicInfo 就要設定了, 此webhook 檢查完checksum 後要return 1｜OK (半形的｜) 給綠界   |
 | OrderResultURL   | 付款完成回到你系統的位置                 | PayComplete   | 沒設定就是顯示在綠界                                        |
-| PaymentInfoURL   | 離線付款取號完成通知你系統的callback url  | Atm, Barcode, Cvs   | 用在紀錄離線付款的取號, 務必設定                            |
+| PaymentInfoURL   | 離線付款取號完成通知你系統的callback url  | Atm, Barcode, Cvs   | 用在紀錄離線付款的取號, 務必設定, 此webhook 檢查完checksum 後要return 1｜OK (半形的｜) 給綠界                   |
 | ClientRedirectURL| 離線付款取號完成要回到你系統的位置         | Atm, Barcode, Cvs   | 沒設定就是顯示在綠界                            |
 | ClientBackURL    | 任何時候在綠界想返回你系統的位置           | PayCancel    | 沒設定在綠界就不會顯示[返回商店]                                        |
 | PeriodReturnURL  | 定期定額授權結果回傳通知你系統的 callback url | PayInPeriods | 用在定期定額的執行結果, 務必設定                                      |
