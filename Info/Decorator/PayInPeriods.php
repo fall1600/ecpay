@@ -46,6 +46,12 @@ class PayInPeriods extends InfoDecorator
         $this->periodReturnUrl = $periodReturnUrl;
     }
 
+    /**
+     * 綠界會依此次授權金額[PeriodAmount]所設定的金額做為之後固定授權的金額。
+     * 交易金額[TotalAmount]設定金額必須和授權金額[PeriodAmount]相同。
+     * 請帶整數,不可有小數點。僅限新台幣。
+     * @return array
+     */
     public function getInfo()
     {
         return $this->info->getInfo() +
