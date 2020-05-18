@@ -92,6 +92,7 @@ class Merchant
     }
 
     /**
+     * 用來驗證綠界來的response 資料是否可信
      * @return bool
      */
     public function validateResponse()
