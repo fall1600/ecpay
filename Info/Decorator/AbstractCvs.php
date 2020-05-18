@@ -14,7 +14,7 @@ abstract class AbstractCvs extends AbstractOfflinePay
      */
     protected $descriptions;
 
-    abstract protected function setSubPaymentType(string $subPaymentType);
+    abstract protected function setSubPaymentType(string $subPaymentType = null);
 
     public function getInfo()
     {
@@ -45,10 +45,8 @@ abstract class AbstractCvs extends AbstractOfflinePay
     {
         parent::__construct($info, $paymentInfoUrl, $clientRedirectUrl, $ttl);
 
-        $this->descriptions = array_slice($descriptions, 0, static::DESCRIPTION_SIZE);
+        $this->setSubPaymentType($subPaymentType);
 
-        if ($subPaymentType) {
-            $this->setSubPaymentType($subPaymentType);
-        }
+        $this->descriptions = array_slice($descriptions, 0, static::DESCRIPTION_SIZE);
     }
 }

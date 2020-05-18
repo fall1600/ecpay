@@ -22,9 +22,9 @@ class Cvs extends AbstractCvs
         $this->ttl = $ttl;
     }
 
-    protected function setSubPaymentType(string $subPaymentType)
+    protected function setSubPaymentType(string $subPaymentType = null)
     {
-        if (! CvsSubType::isValid($subPaymentType)) {
+        if ($subPaymentType && ! CvsSubType::isValid($subPaymentType)) {
             throw new \LogicException('unsupported sub payment type of csv');
         }
 

@@ -22,9 +22,9 @@ class Barcode extends AbstractCvs
         $this->ttl = $ttl;
     }
 
-    protected function setSubPaymentType(string $subPaymentType)
+    protected function setSubPaymentType(string $subPaymentType = null)
     {
-        if (! BarcodeSubType::isValid($subPaymentType)) {
+        if ($subPaymentType && ! BarcodeSubType::isValid($subPaymentType)) {
             throw new \LogicException('unsupported sub payment type of csv barcode');
         }
 
