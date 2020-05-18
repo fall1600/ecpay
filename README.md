@@ -19,9 +19,18 @@ $info = new BasicInfo($merchantId, $returnUrl, $order, $paymentType = 'ALL');
 $info = new IgnorePayment($info, 'ATM', 'BARCODE');
 // 信用卡設定, quickCredit 可開啟記憶信用卡(需實作QuickCreditInterface), 以及設定紅利折抵 
 $info = new Credit($info, $quickCredit, true);
-// 超商繳費設定, 接收取號的webhook url, 要號完成的回導位置, 繳費期限(分鐘)
+// 信用卡分期付款設定
+$info = new PayInInstallments($info, '3,6,12,18,24');
+// 虛擬ATM 繳費設定, 接收取號的webhook url, 要號完成的回導位置, 繳費期限(天), 預設3天
+$info = new Atm($info, $paymentInfoUrl, $clientRedirectUrl, 10);
+// 超商繳費設定, 繳費期限(分鐘), 預設10080分鐘=7天
 $info = new Cvs($info, $paymentInfoUrl, $clientRedirectUrl, 30);
-$info = new Atm($info, );
+// 超商條碼繳費設定, 繳費期限(天), 預設7天
+$info = new Barcode($info, $paymentInfoUrl, $clientRedirectUrl, 3);
+// 是否需要額外的付款資訊
+$info = new ExtraInfo($info);
+// 特店子商城id
+$info = new SubMerchant($info, $subMerchantId);
 ```
 
 #### 建立Ecpay 物件, 注入商店資訊, 帶著交易資訊前往綠界付款
