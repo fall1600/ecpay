@@ -63,12 +63,11 @@ $response->getDate();
 #### 各種url 你分的清楚嗎?
 | Name             | 用途                                  | 設定的物件    |    備註                                                   |
 |:-----------------|:------------------------------------ |:-------------|:---------------------------------------------------------|
-| ReturnURL        | 通知你系統交易資訊的callback url         | BasicInfo    | 通常用在訂單付款狀態切換, 最重要,所以BasicInfo 就要設定了   |
-| PaymentInfoURL   | 離線付款取號完成通知你系統的callback url  | //FIXME: OfflinePay   | 用在紀錄離線付款的取號, 務必設定                            |
-| ClientRedirectURL| 離線付款取號完成要回到你系統的位置         | //FIXME: OfflinePay   | 沒設定就是顯示在綠界                            |
-|                  | 付款完成後要回到你系統的位置              | PayComplete  | 沒設定就是顯示在綠界                                        |
-| ClientBackURL    | 交易取消時回到你系統的位置                | PayCancel    | 沒設定就是顯示在綠界                                        |
-| OrderResultURL   | 付款完成回到你系統的位置                 |               | 沒設定就是顯示在綠界                                        |
-| PeriodReturnURL  | 定期定額授權結果回傳通知你系統的 callback url |            |                                       |
+| ReturnURL        | 通知你系統交易資訊的callback url         | BasicInfo    | 通常用在訂單付款狀態切換, 最重要,所以BasicInfo 就要設定了, 記得此webhook 檢查完checksum 後要return 1｜OK (半形的｜) 給綠界   |
+| OrderResultURL   | 付款完成回到你系統的位置                 | PayComplete   | 沒設定就是顯示在綠界                                        |
+| PaymentInfoURL   | 離線付款取號完成通知你系統的callback url  | Atm, Barcode, Cvs   | 用在紀錄離線付款的取號, 務必設定                            |
+| ClientRedirectURL| 離線付款取號完成要回到你系統的位置         | Atm, Barcode, Cvs   | 沒設定就是顯示在綠界                            |
+| ClientBackURL    | 任何時候在綠界想返回你系統的位置           | PayCancel    | 沒設定在綠界就不會顯示[返回商店]                                        |
+| PeriodReturnURL  | 定期定額授權結果回傳通知你系統的 callback url | 缺物件           |                                       |
 
  
