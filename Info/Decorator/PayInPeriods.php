@@ -54,6 +54,7 @@ class PayInPeriods extends InfoDecorator
                 'PeriodType' => $this->periodType,
                 'Frequency' => $this->frequency,
                 'ExecTimes' => $this->times,
+                'PeriodReturnURL' => $this->periodReturnUrl,
             ];
     }
 
