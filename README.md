@@ -48,13 +48,15 @@ $isValid = $merchant->setRawData($request->all())->validateResponse(); //確認�
 // response 封裝了通知交易的結果, 以下僅列常用methods
 $response = $merchant->getResponse();
 // 付款成敗
-$response->getStatus();
+$response->getReturnCode();
 // 取得交易序號
 $response->getTradeNo();
 // 取得訂單編號, 就是OrderInterface 實作的getMerchantOrderNo
 $response->getMerchantOrderNo();
 // 付款時間
-$response->getPayTime();
+$response->getPaymentDate();
+// 整包payload
+$response->getDate();
 ```
 
 
