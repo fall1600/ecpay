@@ -30,6 +30,36 @@ class Response
     }
 
     /**
+     * 特店旗下店舖代號
+     * @return string|null
+     */
+    public function getSubMerchant()
+    {
+        return $this->data['StoreID'] ?? null;
+    }
+
+    /**
+     * 交易狀態
+     *   若回傳值為 1 時, 為付款成功其餘代碼皆為交易異常, 請至廠商管理後台確認後再出貨。
+     * @return int|null
+     */
+    public function getReturnCode()
+    {
+        return $this->data['RtnCode'] ?? null;
+    }
+
+    /**
+     * Server POST 成功回傳:交易成功
+     * Server POST 補送通知回傳:paid
+     * Client POST 成功回傳:Succeeded
+     * @return string|null
+     */
+    public function getReturnMessage()
+    {
+        return $this->data['RtnMsg'] ?? null;
+    }
+
+    /**
      * @return string|null
      */
     public function getCheckSum()
@@ -44,6 +74,60 @@ class Response
     public function getTradeNo()
     {
         return $this->data['TradeNo'] ?? null;
+    }
+
+    /**
+     * 交易金額
+     * @return int|null
+     */
+    public function getTradeAmt()
+    {
+        return $this->data['TradeAmt'] ?? null;
+    }
+
+    /**
+     * 付款時間(yyyy/MM/dd HH:mm:ss)
+     * @return string|null
+     */
+    public function getPaymentDate()
+    {
+        return $this->data['PaymentDate'] ?? null;
+    }
+
+    /**
+     * 付款方式
+     * @return string|null
+     */
+    public function getPaymentType()
+    {
+        return $this->data['PaymentType'] ?? null;
+    }
+
+    /**
+     * 通路費
+     * @return int|null
+     */
+    public function getPaymentTypeChargeFee()
+    {
+        return $this->data['PaymentTypeChargeFee'] ?? null;
+    }
+
+    /**
+     * 訂單成立時間(yyyy/MM/dd HH:mm:ss)
+     * @return string|null
+     */
+    public function getTradeDate()
+    {
+        return $this->data['TradeDate'] ?? null;
+    }
+
+    /**
+     * 是否為模擬付款
+     * @return bool
+     */
+    public function isSimulated()
+    {
+        return (bool) $this->data['SimulatePaid'];
     }
 
     /**
