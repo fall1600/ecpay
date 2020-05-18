@@ -21,6 +21,7 @@ class Response
     }
 
     /**
+     * OrderInterface 提供給綠界的 MerchantTradeNo, 由特店(應用層系統)提供
      * @return string|null
      */
     public function getMerchantTradeNo()
@@ -37,6 +38,7 @@ class Response
     }
 
     /**
+     * 綠界的交易編號, 由綠界提供
      * @return string|null
      */
     public function getTradeNo()
@@ -45,7 +47,7 @@ class Response
     }
 
     /**
-     * 原始交易資訊, 可用此payload 運算綠界來的checksum 是否正確
+     * 原始交易資訊, 可用此payload 計算checksum, 確認綠界來的checksum 是否相符
      * @return array
      */
     public function getOriginInfoPayload()
