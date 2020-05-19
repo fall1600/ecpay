@@ -64,6 +64,11 @@ class Ecpay
         EOT;
     }
 
+    /**
+     * @param OrderInterface $order
+     * @param string|null $platformId
+     * @return array
+     */
     public function query(OrderInterface $order, string $platformId = null)
     {
         if (! $this->merchant) {
@@ -92,7 +97,8 @@ class Ecpay
         $resp = curl_exec($ch);
         curl_close($ch);
 
-        return json_decode($resp, true);
+        parse_str($resp, $result);
+        return $result;
     }
 
     public function generateForm(Info $info)
