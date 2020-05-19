@@ -15,7 +15,7 @@ $info = new BasicInfo($merchantId, $returnUrl, $order, $paymentType = 'ALL');
 
 #### 控制交易方式
 ```php
-// 依需求使用IgnorePayment 關閉付款方式(可參考PaymentType 付款方式)
+// 反向的設定概念, 依需求關閉付款方式(可參考PaymentType 付款方式)
 $info = new IgnorePayment($info, 'ATM', 'BARCODE');
 // 信用卡設定, quickCredit 可開啟記憶信用卡(需實作QuickCreditInterface), 以及設定紅利折抵 
 $info = new Credit($info, $quickCredit, true);
