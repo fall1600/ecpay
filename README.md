@@ -80,6 +80,15 @@ $response->getPaymentDate();
 $response->getDate();
 ```
 
+#### 單筆交易查詢
+```php
+$resp = $ecpay
+    ->setMerchant($merchant)
+    ->query($order, $platformId = null);
+
+$isValid = $merchant->setRawData($resp)->validResponse(); // 查詢的response, 有需要也可以validate
+
+```
 
 #### 各種url 你分的清楚嗎?
 | Name             | 用途                                  | 設定的物件    |    備註                                                   |
