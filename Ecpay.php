@@ -64,7 +64,7 @@ class Ecpay
         EOT;
     }
 
-    public function query(OrderInterface $order)
+    public function query(OrderInterface $order, string $platformId = null)
     {
         if (! $this->merchant) {
             throw new \LogicException('empty merchant');
@@ -76,9 +76,13 @@ class Ecpay
             'MerchantID' => $this->merchant->getId(),
             'MerchantTradeNo' => $order->getMerchantTradeNo(),
             'TimeStamp' => time(),
-            // todo: 介面不同
-//            'CheckMacValue' => $this->merchant->countCheckSum(),
         ];
+
+        if ($platformId) {
+            $payload['PlatformID'] = $platformId;
+        }
+
+        $payload['CheckMacValue'] = $this->merchant->countChecksumByArray($payload);
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_POST, 1);
