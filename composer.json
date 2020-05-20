@@ -1,6 +1,7 @@
 {
     "name": "fall1600/ecpay",
     "description": "implement of ecpay",
+    "keywords": ["ecpay", "payment"],
     "type": "library",
     "license": "MIT",
     "authors": [

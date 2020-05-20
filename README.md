@@ -1,4 +1,4 @@
-# EcPay 綠界
+# EcPay 綠界金流
 
 [Official Doc](https://www.ecpay.com.tw/Content/files/ecpay_011.pdf)
 
@@ -77,7 +77,7 @@ $response->getMerchantOrderNo();
 // 付款時間
 $response->getPaymentDate();
 // 整包payload
-$response->getDate();
+$response->getData();
 ```
 
 #### 單筆交易查詢
