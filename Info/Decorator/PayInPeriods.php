@@ -29,6 +29,7 @@ class PayInPeriods extends InfoDecorator
     protected $times;
 
     /**
+     * PeriodReturnURL
      * @var string
      */
     protected $periodReturnUrl;

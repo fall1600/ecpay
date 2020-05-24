@@ -13,7 +13,7 @@ class ClientBack extends InfoDecorator
     protected $info;
 
     /**
-     * 付款完成或取號完成
+     * 任何時候在綠界想返回你系統的位置
      * @var string
      */
     protected $clientBackUrl;

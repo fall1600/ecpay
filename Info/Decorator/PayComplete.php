@@ -13,7 +13,7 @@ class PayComplete extends InfoDecorator
     protected $info;
 
     /**
-     * 支付完成返回的商店網址
+     * 付款完成回到你系統的位置
      * @var string
      */
     protected $orderResultUrl;
