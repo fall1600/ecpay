@@ -62,7 +62,7 @@ class Response
     /**
      * @return string|null
      */
-    public function getCheckSum()
+    public function getChecksum()
     {
         return $this->data['CheckMacValue'] ?? null;
     }

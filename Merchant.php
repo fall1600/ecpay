@@ -101,7 +101,7 @@ class Merchant
             throw new \LogicException('set rawData first');
         }
 
-        $responseChecksum = $this->response->getCheckSum();
+        $responseChecksum = $this->response->getChecksum();
         $countedChecksum = $this->countChecksumByArray($this->response->getOriginInfoPayload());
         return $responseChecksum === $countedChecksum;
     }

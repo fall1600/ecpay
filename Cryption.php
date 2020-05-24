@@ -16,7 +16,7 @@ trait Cryption
      * @param  Info  $info
      * @return string
      */
-    public function countCheckSum(Info $info)
+    public function countChecksum(Info $info)
     {
         $infoPayload = $info->getInfo();
 

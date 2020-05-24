@@ -105,7 +105,7 @@ class Ecpay
     {
         $url = $this->isProduction? static::CHECKOUT_URL_PRODUCTION: static::CHECKOUT_URL_TEST;
 
-        $checksum = $this->merchant->countCheckSum($info);
+        $checksum = $this->merchant->countChecksum($info);
 
         $form = "<form name='ecpay' id='$this->formId' method='post' action='$url' style='display: none'>";
         $form .= "<input type='hidden' name='CheckMacValue' value='$checksum' />";

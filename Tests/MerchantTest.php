@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class MerchantTest extends TestCase
 {
-    public function test_countCheckSum()
+    public function test_countChecksum()
     {
         //arrange
         $merchantId = '2000132';
@@ -64,7 +64,7 @@ class MerchantTest extends TestCase
         $expected = 'CFA9BDE377361FBDD8F160274930E815D1A8A2E3E80CE7D404C45FC9A0A1E407';
 
         //act
-        $result = $merchant->countCheckSum($info);
+        $result = $merchant->countChecksum($info);
 
         //assert
         $this->assertEquals($expected, $result);
