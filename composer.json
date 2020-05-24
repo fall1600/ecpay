@@ -1,6 +1,6 @@
 {
     "name": "fall1600/ecpay",
-    "description": "implement of ecpay",
+    "description": "Payment solution of ECPay(綠界科技), implementing by pure PHP",
     "keywords": ["ecpay", "payment"],
     "type": "library",
     "license": "MIT",
