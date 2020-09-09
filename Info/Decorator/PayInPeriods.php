@@ -54,9 +54,11 @@ class PayInPeriods extends Info
      */
     public function getInfo()
     {
-        return $this->info->getInfo() +
+        $result = $this->info->getInfo();
+
+        return $result +
             [
-                'PeriodAmount' => $this->info->getOrder()->getTotalAmount(),
+                'PeriodAmount' => $result['TotalAmount'],
                 'PeriodType' => $this->periodType,
                 'Frequency' => $this->frequency,
                 'ExecTimes' => $this->times,
