@@ -4,9 +4,8 @@ namespace fall1600\Package\Ecpay\Info\Decorator;
 
 use fall1600\Package\Ecpay\Constants\UnionPayType;
 use fall1600\Package\Ecpay\Info\Info;
-use fall1600\Package\Ecpay\Info\InfoDecorator;
 
-class UnionPay extends InfoDecorator
+class UnionPay extends Info
 {
     /**
      * @var Info

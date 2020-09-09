@@ -3,9 +3,8 @@
 namespace fall1600\Package\Ecpay\Info\Decorator;
 
 use fall1600\Package\Ecpay\Info\Info;
-use fall1600\Package\Ecpay\Info\InfoDecorator;
 
-class CustomField extends InfoDecorator
+class CustomField extends Info
 {
     public const SIZE = 4;
 

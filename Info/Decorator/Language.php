@@ -4,9 +4,8 @@ namespace fall1600\Package\Ecpay\Info\Decorator;
 
 use fall1600\Package\Ecpay\Constants\LanguageType;
 use fall1600\Package\Ecpay\Info\Info;
-use fall1600\Package\Ecpay\Info\InfoDecorator;
 
-class Language extends InfoDecorator
+class Language extends Info
 {
     /**
      * @var Info

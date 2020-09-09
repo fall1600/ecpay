@@ -5,9 +5,8 @@ namespace fall1600\Package\Ecpay\Info\Decorator;
 use fall1600\Package\Ecpay\Constants\PaymentType;
 use fall1600\Package\Ecpay\Contracts\QuickCreditInterface;
 use fall1600\Package\Ecpay\Info\Info;
-use fall1600\Package\Ecpay\Info\InfoDecorator;
 
-class Credit extends InfoDecorator
+class Credit extends Info
 {
     /**
      * @var Info

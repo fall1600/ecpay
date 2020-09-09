@@ -4,9 +4,8 @@ namespace fall1600\Package\Ecpay\Info\Decorator;
 
 use fall1600\Package\Ecpay\Constants\PeriodType;
 use fall1600\Package\Ecpay\Info\Info;
-use fall1600\Package\Ecpay\Info\InfoDecorator;
 
-class PayInPeriods extends InfoDecorator
+class PayInPeriods extends Info
 {
     /**
      * @var Info

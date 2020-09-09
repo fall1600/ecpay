@@ -3,9 +3,8 @@
 namespace fall1600\Package\Ecpay\Info\Decorator;
 
 use fall1600\Package\Ecpay\Info\Info;
-use fall1600\Package\Ecpay\Info\InfoDecorator;
 
-class ClientBack extends InfoDecorator
+class ClientBack extends Info
 {
     /**
      * @var Info
