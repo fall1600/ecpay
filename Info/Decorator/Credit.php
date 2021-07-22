@@ -35,10 +35,9 @@ class Credit extends Info
 
     public function getInfo()
     {
-        $result = $this->info->getInfo() +
-            [
-                'ChoosePayment' => PaymentType::CREDIT,
-            ];
+        $result = array_merge($this->info->getInfo(), [
+            'ChoosePayment' => PaymentType::CREDIT,
+        ]);
 
         // 有帶QuickCredit 就是要啟用快速結帳, 所以BindingCard 帶1
         if ($this->quickCredit) {

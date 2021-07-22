@@ -29,13 +29,12 @@ class Atm extends AbstractOfflinePay
 
     public function getInfo()
     {
-        $result = $this->info->getInfo() +
-            [
-                'ChoosePayment' => PaymentType::ATM,
-                'ExpireDate' => $this->ttl,
-                'PaymentInfoURL' => $this->paymentInfoUrl,
-                'ClientRedirectURL' => $this->clientRedirectUrl,
-            ];
+        $result = array_merge($this->info->getInfo(), [
+            'ChoosePayment' => PaymentType::ATM,
+            'ExpireDate' => $this->ttl,
+            'PaymentInfoURL' => $this->paymentInfoUrl,
+            'ClientRedirectURL' => $this->clientRedirectUrl,
+        ]);
 
         if ($this->subPaymentType) {
             $result += [

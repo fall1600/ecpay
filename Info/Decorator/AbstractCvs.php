@@ -18,13 +18,12 @@ abstract class AbstractCvs extends AbstractOfflinePay
 
     public function getInfo()
     {
-        $result = $this->info->getInfo() +
-            [
-                'ChoosePayment' => PaymentType::CVS,
-                'StoreExpireDate' => $this->ttl,
-                'PaymentInfoURL' => $this->paymentInfoUrl,
-                'ClientRedirectURL' => $this->clientRedirectUrl,
-            ];
+        $result = array_merge($this->info->getInfo(), [
+            'ChoosePayment' => PaymentType::CVS,
+            'StoreExpireDate' => $this->ttl,
+            'PaymentInfoURL' => $this->paymentInfoUrl,
+            'ClientRedirectURL' => $this->clientRedirectUrl,
+        ]);
 
         for ($i = 1; $i < count($this->descriptions); $i++) {
             $result += [
