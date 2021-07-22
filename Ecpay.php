@@ -64,6 +64,24 @@ class Ecpay
 EOT;
     }
 
+    public function checkoutForApi(Info $info)
+    {
+        $url = $this->isProduction ? static::CHECKOUT_URL_PRODUCTION : static::CHECKOUT_URL_TEST;
+
+        $formParams = [
+            'CheckMacValue' => $this->merchant->countChecksum($info)
+        ];
+
+        foreach ($info->getInfo() as $key => $value) {
+            $formParams[$key] = $value;
+        }
+
+        return [
+            'url' => $url,
+            'form_params' => $formParams,
+        ];
+    }
+
     /**
      * @param OrderInterface $order
      * @param string|null $platformId
